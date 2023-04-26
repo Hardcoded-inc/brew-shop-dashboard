@@ -1,38 +1,20 @@
 import { useEffect, useRef, useState } from "react";
-import { commands } from "../utils/commands";
+import processCommand from "../utils/commands";
 
 const Terminal = () => {
   const [input, setInput] = useState("");
   const [output, setOutput] = useState([]);
-
   const [inputHistory, setInputHistory] = useState([]);
   const [historyIndex, setHistoryIndex] = useState(-1);
-
   const inputRef = useRef(null);
-
-  const handleInputChange = (e) => {
-    setInput(e.target.value);
-  };
-  const handleClickOnTerminal = () => {
-    inputRef.current.focus();
-  };
-
-  const handleCommandExecution = () => {
-    const [command, ...args] = input.split(" ");
-    if (commands[command]) {
-      commands[command]({ input, output, setOutput, args: args.join(" ") });
-    } else {
-      setOutput([...output, input, `Command '${command}' not found.`]);
-    }
-    setInputHistory([...inputHistory, input]);
-    setHistoryIndex(-1);
-    setInput("");
-  };
 
   useEffect(() => {
     const terminal = document.getElementById("terminal-output-id");
     terminal.scrollTop = terminal.scrollHeight;
   }, [output]);
+
+  const handleInputChange = (e) => setInput(e.target.value);
+  const handleClickOnTerminal = () => inputRef.current.focus();
 
   const handleInputHistory = (direction) => {
     if (inputHistory.length > 0) {
@@ -56,6 +38,13 @@ const Terminal = () => {
         }
       }
     }
+  };
+
+  const handleCommand = () => {
+    processCommand(input, output, setOutput);
+    setInputHistory([...inputHistory, input]);
+    setHistoryIndex(-1);
+    setInput("");
   };
 
   return (
@@ -86,11 +75,12 @@ const Terminal = () => {
             ref={inputRef}
             onChange={(e) => handleInputChange(e)}
             onKeyDown={(e) => {
-              if (e.key === "Enter") {
-                handleCommandExecution();
-              } else if (e.key === "ArrowUp") {
+              if (e.key === "Enter") handleCommand();
+              else if (e.key === "ArrowUp") {
+                e.preventDefault();
                 handleInputHistory("up");
               } else if (e.key === "ArrowDown") {
+                e.preventDefault();
                 handleInputHistory("down");
               }
             }}

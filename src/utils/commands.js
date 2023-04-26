@@ -29,3 +29,12 @@ export const commands = {
     setOutput([]);
   },
 };
+
+const processCommand = (input, output, setOutput) => {
+  const [command, ...args] = input.split(" ");
+  if (commands[command])
+    commands[command]({ input, output, setOutput, args: args.join(" ") });
+  else setOutput([...output, input, `Command '${command}' not found.`]);
+};
+
+export default processCommand;
