@@ -13,6 +13,13 @@ const Terminal = () => {
     terminal.scrollTop = terminal.scrollHeight;
   }, [output]);
 
+  useEffect(() => {
+    inputRef.current.style.width =
+      inputRef.current.value.length > 0
+        ? inputRef.current.value.length + "ch"
+        : "10px";
+  }, [input]);
+
   const handleInputChange = (e) => setInput(e.target.value);
   const handleClickOnTerminal = () => inputRef.current.focus();
 
@@ -57,16 +64,16 @@ const Terminal = () => {
           {output.map((item) => (
             <div className="terminal-output__single">
               <pre>
-                <b>root@Kali</b>:
-                <span className="terminal-carret__span">~</span>$
+                <b>root@Kali</b>:<span className="terminal-caret__span">~</span>
+                $
               </pre>
               {item}
             </div>
           ))}
         </div>
-        <div className="terminal-carret">
+        <div className="terminal-caret">
           <pre>
-            <b>root@Kali</b>:<span className="terminal-carret__span">~</span>$
+            <b>root@Kali</b>:<span className="terminal-caret__span">~</span>$
           </pre>
           <input
             className="terminal-input"
