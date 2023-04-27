@@ -1,3 +1,5 @@
+// TODO: Write useFlag hook
+
 // checkFlag: (state, { value, missionId, flagId }) => {
 //   // 1. Get mission and flag
 //   // 2. Hash value with md5
