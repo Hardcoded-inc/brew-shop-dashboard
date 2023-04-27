@@ -12,17 +12,17 @@ const useHistory = () => {
     setPointer(history.length);
   };
 
-  prevInput = () => {
+  const prevInput = () => {
     if (pointer > 0) setPointer((prev) => prev - 1);
     return history[pointer];
   };
 
-  nextInput = () => {
+  const nextInput = () => {
     if (pointer < history.length - 1) setPointer((prev) => prev + 1);
     return history[pointer];
   };
 
-  return { prevInput, nextInput, addToHistory };
+  return { prevInput, nextInput, addToHistory, log: history.current };
 };
 
 export default useHistory;
