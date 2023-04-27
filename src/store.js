@@ -1,5 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
-import missionsReducer from "./features/missions";
+import missionsReducer from "./redux/missions";
 
 export const store = configureStore({
   reducer: {
