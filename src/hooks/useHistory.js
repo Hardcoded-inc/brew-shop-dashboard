@@ -23,8 +23,8 @@ const useHistory = () => {
   };
 
   const nextInput = () => {
-    if (pointer < history.length - 1) setPointer((prev) => prev + 1);
-    return history[pointer];
+    if (pointer < history.length) setPointer((prev) => prev + 1);
+    return [...history, ""][pointer];
   };
 
   return { prevInput, nextInput, addToHistory };
