@@ -1,4 +1,4 @@
-import { useEffect, useReducer, useRef } from "react";
+import { useEffect, useState, useReducer, useRef } from "react";
 import {
   terminalReducer,
   ACTION_TYPES,
@@ -7,6 +7,7 @@ import {
 import commandsHandler from "../utils/commandsHandler";
 
 const Terminal = () => {
+  const [inputValue, setInputValue] = useState("");
   const [state, dispatch] = useReducer(terminalReducer, initialState);
   const inputRef = useRef(null);
 
@@ -17,11 +18,15 @@ const Terminal = () => {
 
   const handleClickOnTerminal = () => inputRef.current.focus();
 
+  // const handleInput = (e) => {
+  //   dispatch({
+  //     type: ACTION_TYPES.SET_INPUT,
+  //     payload: e.target.value,
+  //   });
+  // };
+
   const handleInput = (e) => {
-    dispatch({
-      type: ACTION_TYPES.SET_INPUT,
-      payload: e.target.value,
-    });
+    setInputValue(e.target.value);
   };
 
   const handleInputHistory = (direction) => {
@@ -67,6 +72,17 @@ const Terminal = () => {
     });
   };
 
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") handlePost(e);
+    else if (e.key === "ArrowUp") {
+      e.preventDefault();
+      handleInputHistory("up");
+    } else if (e.key === "ArrowDown") {
+      e.preventDefault();
+      handleInputHistory("down");
+    }
+  };
+
   return (
     <div
       className="terminal"
@@ -100,19 +116,10 @@ const Terminal = () => {
           <input
             className="terminal-input"
             type="text"
-            value={state.input}
+            value={inputValue}
             ref={inputRef}
-            onChange={(e) => handleInput(e)}
-            onKeyDown={(e) => {
-              if (e.key === "Enter") handlePost(e);
-              else if (e.key === "ArrowUp") {
-                e.preventDefault();
-                handleInputHistory("up");
-              } else if (e.key === "ArrowDown") {
-                e.preventDefault();
-                handleInputHistory("down");
-              }
-            }}
+            onChange={handleInput}
+            onKeyDown={handleKeyDown}
           />
         </div>
       </div>
