@@ -11,11 +11,11 @@ const Terminal = () => {
   const { records } = useTerminal();
   const inputRef = useRef(null);
 
-  useEffect(scrollToBottom, [records]);
   const scrollToBottom = () => {
     const terminal = document.getElementById("terminal-output-id");
     terminal.scrollTop = terminal.scrollHeight;
   };
+  useEffect(scrollToBottom, [records]);
 
   // Handlers
 
@@ -32,9 +32,11 @@ const Terminal = () => {
       }
     }
     if (e.key === "ArrowUp") {
+      e.preventDefault();
       setInputValue(prevInput());
     }
     if (e.key === "ArrowDown") {
+      e.preventDefault();
       setInputValue(nextInput());
     }
   };
