@@ -1,67 +1,89 @@
-import { useEffect, useRef, useState } from "react";
-import processCommand from "../utils/commands";
+import { useEffect, useReducer, useRef } from "react";
+import {
+  terminalReducer,
+  ACTION_TYPES,
+  initialState,
+} from "../utils/terminalReducer";
+import commandsHandler from "../utils/commandsHandler";
 
 const Terminal = () => {
-  const [input, setInput] = useState("");
-  const [output, setOutput] = useState([]);
-  const [inputHistory, setInputHistory] = useState([]);
-  const [historyIndex, setHistoryIndex] = useState(-1);
+  const [state, dispatch] = useReducer(terminalReducer, initialState);
   const inputRef = useRef(null);
 
   useEffect(() => {
     const terminal = document.getElementById("terminal-output-id");
     terminal.scrollTop = terminal.scrollHeight;
-  }, [output]);
+  }, [state.output]);
 
-  useEffect(() => {
-    inputRef.current.style.width =
-      inputRef.current.value.length > 0
-        ? inputRef.current.value.length + "ch"
-        : "10px";
-  }, [input]);
-
-  const handleInputChange = (e) => setInput(e.target.value);
   const handleClickOnTerminal = () => inputRef.current.focus();
 
+  const handleInput = (e) => {
+    dispatch({
+      type: ACTION_TYPES.SET_INPUT,
+      payload: e.target.value,
+    });
+  };
+
   const handleInputHistory = (direction) => {
-    if (inputHistory.length > 0) {
-      if (direction === "up") {
-        if (historyIndex === -1) {
-          setHistoryIndex(inputHistory.length - 1);
-          setInput(inputHistory[inputHistory.length - 1]);
-        } else if (historyIndex > 0) {
-          setHistoryIndex(historyIndex - 1);
-          setInput(inputHistory[historyIndex - 1]);
+    if (state.inputHistory.length === 0) return;
+
+    switch (direction) {
+      case "up":
+        if (state.historyIndex < state.inputHistory.length - 1) {
+          dispatch({
+            type: ACTION_TYPES.PREV_INPUT,
+          });
         }
-      } else if (direction === "down") {
-        if (historyIndex === -1) {
-          setInput("");
-        } else if (historyIndex < inputHistory.length - 1) {
-          setHistoryIndex(historyIndex + 1);
-          setInput(inputHistory[historyIndex + 1]);
-        } else if (historyIndex === inputHistory.length - 1) {
-          setHistoryIndex(-1);
-          setInput("");
+        break;
+
+      case "down":
+        if (state.historyIndex === 0) {
+          dispatch({
+            type: ACTION_TYPES.SET_INPUT,
+            payload: "",
+          });
         }
-      }
+
+        if (state.historyIndex > 0) {
+          dispatch({
+            type: ACTION_TYPES.NEXT_INPUT,
+          });
+        }
+        break;
+
+      default:
+        break;
     }
   };
 
-  const handleCommand = () => {
-    processCommand(input, output, setOutput);
-    setInputHistory([...inputHistory, input]);
-    setHistoryIndex(-1);
-    setInput("");
+  const handlePost = (e) => {
+    if (inputRef.current.value === "") return;
+
+    const output = commandsHandler(e.target.value);
+
+    dispatch({
+      type: ACTION_TYPES.SET_OUTPUT,
+      payload: output,
+    });
   };
 
   return (
-    <div className="terminal">
+    <div
+      className="terminal"
+      style={{
+        border:
+          document.activeElement === inputRef.current
+            ? "2px solid #ffffff"
+            : "2px solid #020202",
+      }}
+    >
       <div className="terminal-header">
         <span>root@Kali: terminal ~</span>
       </div>
       <div className="terminal-window" onClick={handleClickOnTerminal}>
         <div className="terminal-output" id="terminal-output-id">
-          {output.map((item) => (
+          <pre>$</pre>
+          {state.output.map((item) => (
             <div className="terminal-output__single">
               <pre>
                 <b>root@Kali</b>:<span className="terminal-caret__span">~</span>
@@ -78,11 +100,11 @@ const Terminal = () => {
           <input
             className="terminal-input"
             type="text"
-            value={input}
+            value={state.input}
             ref={inputRef}
-            onChange={(e) => handleInputChange(e)}
+            onChange={(e) => handleInput(e)}
             onKeyDown={(e) => {
-              if (e.key === "Enter") handleCommand();
+              if (e.key === "Enter") handlePost(e);
               else if (e.key === "ArrowUp") {
                 e.preventDefault();
                 handleInputHistory("up");
