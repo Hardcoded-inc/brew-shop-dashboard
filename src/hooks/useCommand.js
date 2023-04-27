@@ -1,11 +1,11 @@
 import useTerminal from "./useTerminal";
 
 export const commands = {
-  help: (argsList) => "Help output.",
-  list: (argsList) => "Hist output.",
-  select: (argsList) => "seHect output.",
-  status: (argsList) => "stHtus output.",
-  flag: (argsList) => "Hlag output.",
+  help: (argsList) => "Help command output.",
+  list: (argsList) => "List command output.",
+  select: (argsList) => "Select command output.",
+  status: (argsList) => "Status command output.",
+  flag: (argsList) => "Flag command output.",
 };
 
 const BAD_COMMAND =
