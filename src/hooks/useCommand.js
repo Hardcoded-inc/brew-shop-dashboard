@@ -1,33 +1,33 @@
-import { useState } from "react";
+import useTerminal from "./useTerminal";
 
 export const commands = {
-  help: (argsList) => {},
-  list: (argsList) => {},
-  select: (argsList) => {},
-  status: (argsList) => {},
-  flag: (argsList) => {},
+  help: (argsList) => "Help output.",
+  list: (argsList) => "Hist output.",
+  select: (argsList) => "seHect output.",
+  status: (argsList) => "stHtus output.",
+  flag: (argsList) => "Hlag output.",
 };
 
 const BAD_COMMAND =
   "Invalid command. Available commands: help, list, select, status, flag";
 
 const useCommand = () => {
-  const [output, setOutput] = useState("");
+  const { addRecord } = useTerminal();
 
   const applyCommand = (input) => {
     const [command, ...args] = input.split(" ");
-    const name = toLowerCase(command);
+    const name = command.toLowerCase();
 
     if (!Object.keys(commands).includes(name)) {
-      setOutput(BAD_COMMAND);
+      addRecord({ value: BAD_COMMAND, type: "output" });
       return;
     }
 
     const out = commands[name](args);
-    setOutput(out);
+    addRecord({ value: out, type: "output" });
   };
 
-  return { applyCommand, output };
+  return { applyCommand };
 };
 
 export default useCommand;

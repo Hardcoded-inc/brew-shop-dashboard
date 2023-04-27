@@ -2,36 +2,58 @@ import { useEffect, useState, useRef } from "react";
 
 import useHistory from "../hooks/useHistory";
 import useCommand from "../hooks/useCommand";
+import useTerminal from "../hooks/useTerminal";
 
 const Terminal = () => {
   const [inputValue, setInputValue] = useState("");
   const { prevInput, nextInput, addToHistory } = useHistory();
-  const [applyCommand, output] = useCommand();
+  const { applyCommand } = useCommand();
+  const { records } = useTerminal();
   const inputRef = useRef(null);
 
-  useEffect(() => {
+  useEffect(scrollToBottom, [records]);
+  const scrollToBottom = () => {
     const terminal = document.getElementById("terminal-output-id");
     terminal.scrollTop = terminal.scrollHeight;
-  }, [state.output]);
+  };
+
+  // Handlers
+
+  const handleClickOnTerminal = () => inputRef.current.focus();
 
   const handleChange = (e) => setInputValue(e.target.value);
 
   const handleKeyDown = (e) => {
     if (e.key === "Enter") {
-      applyCommand(inputValue);
-      addToHistory(inputValue);
+      if (inputValue !== "") {
+        addToHistory(inputValue);
+        applyCommand(inputValue);
+        setInputValue("");
+      }
     }
     if (e.key === "ArrowUp") {
-      // e.preventDefault();
       setInputValue(prevInput());
     }
     if (e.key === "ArrowDown") {
-      // e.preventDefault();
       setInputValue(nextInput());
     }
   };
 
+  // TODO: Those components should be extracted to separate files
+  const outputItem = (val) => (
+    <div className="terminal-output__single">{val}</div>
+  );
+  const inputItem = (val) => (
+    <div className="terminal-output__single">
+      <pre>
+        <b>root@Kali</b>:<span className="terminal-caret__span">~</span>$
+      </pre>
+      {val}
+    </div>
+  );
+
   return (
+    // TODO: Extract css from here
     <div
       className="terminal"
       style={{
@@ -47,15 +69,9 @@ const Terminal = () => {
       <div className="terminal-window" onClick={handleClickOnTerminal}>
         <div className="terminal-output" id="terminal-output-id">
           <pre>$</pre>
-          {state.output.map((item) => (
-            <div className="terminal-output__single">
-              <pre>
-                <b>root@Kali</b>:<span className="terminal-caret__span">~</span>
-                $
-              </pre>
-              {item}
-            </div>
-          ))}
+          {records.map(({ value, type }) =>
+            type === "input" ? inputItem(value) : outputItem(value)
+          )}
         </div>
         <div className="terminal-caret">
           <pre>
