@@ -18,7 +18,7 @@ export const missionsSlice = createSlice({
   },
 });
 
-// TODO: Probably it would be nice to create some (useMissions) hook to easily access the state
+// TODO: Probably it would be nice to create some (useMissions) hook to easily access state
 
 export const { setStageDone, resetState } = missionsSlice.actions;
 export default missionsSlice.reducer;
