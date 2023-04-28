@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-// TODO: Get initial state from local storage
+// TODO: Get initial state from the local storage or if doesn't exist from the missions.js file
 const initialState = {};
 
 export const missionsSlice = createSlice({

@@ -76,9 +76,7 @@ const Terminal = () => {
           )}
         </div>
         <div className="terminal-caret">
-        <div className="terminal-caret">
           <pre>
-            <b>root@Kali</b>:<span className="terminal-caret__span">~</span>$
             <b>root@Kali</b>:<span className="terminal-caret__span">~</span>$
           </pre>
           <input
