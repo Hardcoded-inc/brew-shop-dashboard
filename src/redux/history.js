@@ -10,14 +10,17 @@ export const historySlice = createSlice({
   initialState,
   reducers: {
     changePointer: (state, { payload }) => {
-      state.payload = payload;
+      state.pointer = payload;
     },
     pushToHistory: (state, { payload }) => {
       state.pointer = -1;
       state.list = [payload, ...state.list];
     },
+    reset: () => {
+      return initialState;
+    },
   },
 });
 
-export const { changePointer, pushToHistory } = historySlice.actions;
+export const { changePointer, pushToHistory, reset } = historySlice.actions;
 export default historySlice.reducer;

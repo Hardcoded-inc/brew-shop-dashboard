@@ -10,10 +10,7 @@ const loadFromLocalStorage = () => {
 };
 const saveToLocalStorage = (state) => {
   try {
-    const currentState = JSON.stringify({
-      missions: state.missions,
-      history: state.history,
-    });
+    const currentState = JSON.stringify(state);
     localStorage.setItem("savedState", currentState);
   } catch (e) {
     console.warn(e);
