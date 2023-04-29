@@ -2,7 +2,10 @@ import { configureStore } from "@reduxjs/toolkit";
 import missionsReducer from "./redux/missions";
 import terminalReducer from "./redux/terminal";
 import historyReducer from "./redux/history";
-import useLocalStorage from "./hooks/useLocalStorage";
+import {
+  loadFromLocalStorage,
+  saveToLocalStorage,
+} from "./hooks/useLocalStorage";
 
 const store = configureStore({
   reducer: {
@@ -10,9 +13,9 @@ const store = configureStore({
     terminal: terminalReducer,
     history: historyReducer,
   },
-  preloadedState: useLocalStorage("load"),
+  preloadedState: loadFromLocalStorage(),
 });
 
-store.subscribe(() => useLocalStorage("save", store.getState()));
+store.subscribe(() => saveToLocalStorage(store.getState()));
 
 export default store;
