@@ -3,6 +3,7 @@ const useLocalStorage = () => {
     try {
       const savedState = localStorage.getItem("savedState");
       if (savedState === null) return undefined;
+      // TODO: Load missions from the file if localStorage does not contain them.
       return JSON.parse(savedState);
     } catch (e) {
       console.warn(e);
