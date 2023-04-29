@@ -1,30 +1,22 @@
-import { useState } from "react";
-import useTerminal from "./useTerminal";
+import { useSelector, useDispatch } from "react-redux";
+import { changePointer, pushToHistory } from "../redux/history";
 
 const useHistory = () => {
-  const { addRecord } = useTerminal();
+  const dispatch = useDispatch();
+  const history = useSelector((state) => state.history.list);
+  const pointer = useSelector((state) => state.history.pointer);
 
-  // using Ref, because it's independent from the re-render cycle
-  // const history = useRef([]);
-  const [history, setHistory] = useState([]);
-
-  // Pointer always points to the current position in the history array
-  const [pointer, setPointer] = useState(-1);
-
-  const addToHistory = (input) => {
-    setHistory([...history, input]);
-    setPointer(history.length);
-    addRecord({ value: input, type: "input" });
-  };
+  const addToHistory = (input) => dispatch(pushToHistory(input));
+  const savePointer = (pointer) => dispatch(changePointer(pointer));
 
   const prevInput = () => {
-    if (pointer > 0) setPointer((prev) => prev - 1);
+    if (pointer < history.length) savePointer(pointer + 1);
     return history[pointer];
   };
 
   const nextInput = () => {
-    if (pointer < history.length) setPointer((prev) => prev + 1);
-    return [...history, ""][pointer];
+    if (pointer > 0) savePointer(pointer - 1);
+    return ["", ...history][pointer];
   };
 
   return { prevInput, nextInput, addToHistory };

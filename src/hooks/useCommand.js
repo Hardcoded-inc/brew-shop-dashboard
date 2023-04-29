@@ -9,14 +9,16 @@ export const commands = {
 };
 
 const BAD_COMMAND =
-  "Invalid command. Available commands: help, list, select, status, flag";
+  "Invalid command. Available commands: " + Object.keys(commands).join(", ");
 
 const useCommand = () => {
-  const { addRecord } = useTerminal();
+  const { addRecord, clear } = useTerminal();
 
   const applyCommand = (input) => {
     const [command, ...args] = input.split(" ");
     const name = command.toLowerCase();
+
+    addRecord({ value: input, type: "input" });
 
     if (!Object.keys(commands).includes(name)) {
       addRecord({ value: BAD_COMMAND, type: "output" });
@@ -24,6 +26,7 @@ const useCommand = () => {
     }
 
     const out = commands[name](args);
+
     addRecord({ value: out, type: "output" });
   };
 

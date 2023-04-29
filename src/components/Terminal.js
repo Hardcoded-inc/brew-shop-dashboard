@@ -8,7 +8,7 @@ const Terminal = () => {
   const [inputValue, setInputValue] = useState("");
   const { prevInput, nextInput, addToHistory } = useHistory();
   const { applyCommand } = useCommand();
-  const { records } = useTerminal();
+  const { records, addRecord } = useTerminal();
   const inputRef = useRef(null);
 
   const scrollToBottom = () => {
