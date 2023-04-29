@@ -1,8 +1,8 @@
 import Header from "./components/Header";
 import Terminal from "./components/Terminal";
-import "./styles/App.css";
-import "./styles/Header.css";
-import "./styles/Terminal.css";
+import "./assets/styles/App.css";
+import "./assets/styles/Header.css";
+import "./assets/styles/Terminal.css";
 import KaliLogo from "./assets/kali-logo.png";
 
 function App() {
