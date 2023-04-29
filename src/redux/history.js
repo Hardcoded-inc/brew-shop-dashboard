@@ -10,16 +10,11 @@ export const historySlice = createSlice({
   initialState,
   reducers: {
     changePointer: (state, { payload }) => {
-      return {
-        ...state,
-        pointer: payload,
-      };
+      state.payload = payload;
     },
     pushToHistory: (state, { payload }) => {
-      return {
-        pointer: -1,
-        list: [payload, ...state.list],
-      };
+      state.pointer = -1;
+      state.list = [payload, ...state.list];
     },
   },
 });

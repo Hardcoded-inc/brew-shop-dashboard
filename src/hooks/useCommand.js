@@ -12,7 +12,7 @@ const BAD_COMMAND =
   "Invalid command. Available commands: " + Object.keys(commands).join(", ");
 
 const useCommand = () => {
-  const { addRecord, clear } = useTerminal();
+  const { addRecord } = useTerminal();
 
   const applyCommand = (input) => {
     const [command, ...args] = input.split(" ");
