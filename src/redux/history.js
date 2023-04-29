@@ -16,9 +16,6 @@ export const historySlice = createSlice({
       state.pointer = -1;
       state.list = [payload, ...state.list];
     },
-    reset: () => {
-      return initialState;
-    },
   },
 });
 
