@@ -7,8 +7,10 @@ export const missionsSlice = createSlice({
   name: "missions",
   initialState,
   reducers: {
-    setUserAnswer: (state, { missionIndex, flagIndex, answer }) => {
-      state.list[missionIndex].flags[flagIndex].user_answer = answer;
+    setFlag: (state, { missionIndex, flagIndex, answer }) => {
+      const pickedFlag = state.list[missionIndex].flags[flagIndex];
+      pickedFlag.user_answer = answer;
+      pickedFlag.isValid = true;
     },
     selectMission: (state, { payload }) => {
       state.selectedMission = payload;
