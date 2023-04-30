@@ -17,6 +17,13 @@
           "value": "c0d08fb9e17c0f00b88d623c5e524b04",
           "user_answer": "",
           "isValid": false
+        },
+        {
+          "flag_name": "Flag 3",
+          "question": "Test question",
+          "value": "c0d08fb9e17c0f00b88d623c5e524b04",
+          "user_answer": "",
+          "isValid": false
         }
       ]
     },
