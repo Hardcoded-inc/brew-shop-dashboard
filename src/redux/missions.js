@@ -7,18 +7,19 @@ export const missionsSlice = createSlice({
   name: "missions",
   initialState,
   reducers: {
-    // TODO: Just write those reducers
-    setStageDone: (state, { stageId }) => {
-      // 1. Get mission
-      // 2. Set stage "done" to true
+    setUserAnswer: (state, { missionIndex, flagIndex, answer }) => {
+      state.list[missionIndex].flags[flagIndex].user_answer = answer;
     },
-    resetState: (state) => {
-      // Reset state from json
+    selectMission: (state, { payload }) => {
+      state.selectedMission = payload;
+    },
+    reset: () => {
+      return initialState;
     },
   },
 });
 
 // TODO: Probably it would be nice to create some (useMissions) hook to easily access state
 
-export const { setStageDone, resetState } = missionsSlice.actions;
+export const { setFlageDone, resetState } = missionsSlice.actions;
 export default missionsSlice.reducer;
