@@ -1,9 +1,10 @@
 import compareAnswers from "../utils/compareAnswers";
 import { setFlagTrue } from "../redux/missions";
 import { useSelector, useDispatch } from "react-redux";
-import { addRecord } from "./useTerminal";
+import useTerminal from "./useTerminal";
 
 const useFlag = (missionIndex, flagIndex, userAnswer) => {
+  const { addRecord } = useTerminal();
   const dispatch = useDispatch();
   const savedAnswer = useSelector(
     (state) => state.missions.list[missionIndex].flags[flagIndex].answer
@@ -16,8 +17,8 @@ const useFlag = (missionIndex, flagIndex, userAnswer) => {
     } else {
       addRecord({ value: `Provided flag is <b>incorrect<b>`, type: "output" });
     }
-  }
-  return { checkFlag }
+  };
+  return { checkFlag };
 };
 
 export default useFlag;
