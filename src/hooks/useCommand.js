@@ -1,16 +1,19 @@
 import useTerminal from "./useTerminal";
 import MANUAL from "../data/manual";
+import useMissions from "./useMissions";
 
 const useCommand = () => {
   const { stdIn, stdOut, clear } = useTerminal();
+  const { getMissions } = useMissions();
 
   const handleHelp = () => stdOut(MANUAL);
   const handleClear = () => clear();
+  const handleList = () => stdOut(getMissions());
 
   // TODO: Implement those commands
   const commands = {
     help: handleHelp,
-    list: (argsList) => "List command output.",
+    list: handleList,
     select: (argsList) => "Select command output.",
     status: (argsList) => "Status command output.",
     flag: (argsList) => "List command output.",

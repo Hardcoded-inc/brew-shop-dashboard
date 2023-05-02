@@ -11,14 +11,14 @@
           "question": "Test question",
           "hint": "some hint",
           "value": "4f7044c062e4b46d28c4e85f6a928f8a",
-          "done": false
+          "done": true
         },
         {
           "flag_name": "Flag 2",
           "question": "Test question",
           "hint": "some hint",
           "value": "c0d08fb9e17c0f00b88d623c5e524b04",
-          "done": false
+          "done": true
         },
         {
           "flag_name": "Flag 3",
