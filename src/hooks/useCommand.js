@@ -1,20 +1,25 @@
 import useTerminal from "./useTerminal";
 
-// TODO: Implement commands
-export const commands = {
-  help: (argsList) => "Help command output.",
-  list: (argsList) => "List command output.",
-  select: (argsList) => "Select command output.",
-  status: (argsList) => "Status command output.",
-  flag: (argsList) => "List command output.",
-  clear: (argsList) => "Clear command output.",
-};
-
-const BAD_COMMAND =
-  "Invalid command. Available commands: " + Object.keys(commands).join(", ");
-
 const useCommand = () => {
-  const { addRecord } = useTerminal();
+  const { addRecord, clear } = useTerminal();
+
+  const handleClear = () => {
+    addRecord({ value: "cleared", type: "output" });
+    clear();
+  };
+
+  // TODO: Implement those commands
+  const commands = {
+    help: (argsList) => "Help command output.",
+    list: (argsList) => "List command output.",
+    select: (argsList) => "Select command output.",
+    status: (argsList) => "Status command output.",
+    flag: (argsList) => "List command output.",
+    clear: handleClear,
+  };
+
+  const BAD_COMMAND =
+    "Invalid command. Available commands: " + Object.keys(commands).join(", ");
 
   const applyCommand = (input) => {
     const [command, ...args] = input.split(" ");
@@ -27,9 +32,7 @@ const useCommand = () => {
       return;
     }
 
-    const out = commands[name](args);
-
-    addRecord({ value: out, type: "output" });
+    commands[name](args);
   };
 
   return { applyCommand };
