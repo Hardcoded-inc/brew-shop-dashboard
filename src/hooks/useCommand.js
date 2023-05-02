@@ -1,5 +1,6 @@
 import useTerminal from "./useTerminal";
 
+// TODO: Implement commands
 export const commands = {
   help: (argsList) => "Help command output.",
   list: (argsList) => "List command output.",
