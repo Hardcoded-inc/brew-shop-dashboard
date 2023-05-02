@@ -1,78 +1,96 @@
-[
-  {
-    "title": "Mission 1",
-    "mission_id": 1,
-    "isSelected": 0,
-    "flags": [
-      {
-        "flag_name": "Flag 1",
-        "question": "Test question",
-        "value": "4f7044c062e4b46d28c4e85f6a928f8a",
-        "user_answer": ""
-      },
-      {
-        "flag_name": "Flag 2",
-        "question": "Test question",
-        "value": "c0d08fb9e17c0f00b88d623c5e524b04",
-        "user_answer": ""
-      }
-    ]
-  },
-  {
-    "title": "Mission 2",
-    "mission_id": 2,
-    "isSelected": 0,
-    "flags": [
-      {
-        "flag_name": "Flag 1",
-        "question": "Test question",
-        "value": "97f5a0280278cbbfd9fbf0da09b18d3e",
-        "user_answer": ""
-      },
-      {
-        "flag_name": "Flag 2",
-        "question": "Test question",
-        "value": "b9e1f05cefe67d6b27e8e0387a3de3d3",
-        "user_answer": ""
-      }
-    ]
-  },
-  {
-    "title": "Mission 3",
-    "mission_id": 3,
-    "isSelected": 0,
-    "flags": [
-      {
-        "flag_name": "Flag 1",
-        "question": "Test question",
-        "value": "08e12ecf15b0250aa1c8b749f8397d2c",
-        "user_answer": ""
-      },
-      {
-        "flag_name": "Flag 2",
-        "question": "Test question",
-        "value": "d05b8c76eb6c0d6c3db3f3f58083b1f9",
-        "user_answer": ""
-      }
-    ]
-  },
-  {
-    "title": "Mission 4",
-    "mission_id": 4,
-    "isSelected": 0,
-    "flags": [
-      {
-        "flag_name": "Flag 1",
-        "question": "Test question",
-        "value": "5c5b5e5a5f364a13e0d0e6d73b8e2d08",
-        "user_answer": ""
-      },
-      {
-        "flag_name": "Flag 2",
-        "question": "Test question",
-        "value": "9d5792f8e1c6bbd1e59b07c3cf3db755",
-        "user_answer": ""
-      }
-    ]
-  }
-]
+{
+  "selectedMissionId": null,
+  "list": [
+    {
+      "id": 1,
+      "title": "Mission 1",
+      "description": "some desc for Mission 1",
+      "flags": [
+        {
+          "flag_name": "Flag 1",
+          "question": "Test question",
+          "hint": "some hint",
+          "value": "4f7044c062e4b46d28c4e85f6a928f8a",
+          "done": false
+        },
+        {
+          "flag_name": "Flag 2",
+          "question": "Test question",
+          "hint": "some hint",
+          "value": "c0d08fb9e17c0f00b88d623c5e524b04",
+          "done": false
+        },
+        {
+          "flag_name": "Flag 3",
+          "question": "Test question",
+          "hint": "some hint",
+          "value": "c0d08fb9e17c0f00b88d623c5e524b04",
+          "done": false
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Mission 2",
+      "description": "some desc for Mission 2",
+      "flags": [
+        {
+          "flag_name": "Flag 1",
+          "question": "Test question",
+          "hint": "some hint",
+          "value": "97f5a0280278cbbfd9fbf0da09b18d3e",
+          "done": false
+        },
+        {
+          "flag_name": "Flag 2",
+          "question": "Test question",
+          "hint": "some hint",
+          "value": "b9e1f05cefe67d6b27e8e0387a3de3d3",
+          "done": false
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "title": "Mission 3",
+      "description": "some desc for Mission 3",
+      "flags": [
+        {
+          "flag_name": "Flag 1",
+          "question": "Test question",
+          "hint": "some hint",
+          "value": "08e12ecf15b0250aa1c8b749f8397d2c",
+          "done": false
+        },
+        {
+          "flag_name": "Flag 2",
+          "question": "Test question",
+          "hint": "some hint",
+          "value": "d05b8c76eb6c0d6c3db3f3f58083b1f9",
+          "done": ""
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "title": "Mission 4",
+      "description": "some desc for Mission 4",
+      "flags": [
+        {
+          "flag_name": "Flag 1",
+          "question": "Test question",
+          "hint": "some hint",
+          "value": "5c5b5e5a5f364a13e0d0e6d73b8e2d08",
+          "done": false
+        },
+        {
+          "flag_name": "Flag 2",
+          "question": "Test question",
+          "hint": "some hint",
+          "value": "9d5792f8e1c6bbd1e59b07c3cf3db755",
+          "done": false
+        }
+      ]
+    }
+  ]
+}

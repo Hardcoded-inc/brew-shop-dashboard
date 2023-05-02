@@ -1,11 +1,13 @@
 import useTerminal from "./useTerminal";
 
+// TODO: Implement commands
 export const commands = {
   help: (argsList) => "Help command output.",
   list: (argsList) => "List command output.",
   select: (argsList) => "Select command output.",
   status: (argsList) => "Status command output.",
-  flag: (argsList) => "Flag command output.",
+  flag: (argsList) => "List command output.",
+  clear: (argsList) => "Clear command output.",
 };
 
 const BAD_COMMAND =

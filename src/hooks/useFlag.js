@@ -1,8 +1,34 @@
-// TODO: Write useFlag hook
+import compareAnswers from "../utils/compareAnswers";
+import { setFlagTrue } from "../redux/missions";
+import { useDispatch } from "react-redux";
+import useTerminal from "./useTerminal";
 
-// checkFlag: (state, { value, missionId, flagId }) => {
-//   // 1. Get mission and flag
-//   // 2. Hash value with md5
-//   // 3. Check if value is correct with saved falg
-//   // 4. If correct, set "done" to true
-// },
+const useFlag = (currentMission) => {
+  const { addRecord } = useTerminal();
+  const dispatch = useDispatch();
+  const currentFlag = currentMission?.flags.find(({ done }) => !done);
+
+  //   const nextFlag = () => {
+  //     if (!currentMission || !currentFlag) null;
+  //
+  //     const currentIndex = currentMission.flags.indexOf(currentFlag);
+  //     const nextIndex = currentIndex + 1;
+  //
+  //     if (nextIndex >= currentMission.flags.length) null;
+  //
+  //     return currentMission.flags[nextIndex];
+  //   };
+
+  const checkFlag = (value) => {
+    const isCorrect = compareAnswers(value, currentFlag.value);
+    if (isCorrect) dispatch(acceptFlag());
+
+    addRecord({
+      value: `Provided flag is <b>${isCorrect ? "correct" : "incorrect"}<b>`,
+      type: "output",
+    });
+  };
+  return { checkFlag };
+};
+
+export default useFlag;
