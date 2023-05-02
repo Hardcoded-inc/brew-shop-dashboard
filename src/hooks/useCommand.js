@@ -1,10 +1,10 @@
 import useTerminal from "./useTerminal";
 
 const useCommand = () => {
-  const { addRecord, clear } = useTerminal();
+  const { stdIn, stdOut, clear } = useTerminal();
 
   const handleClear = () => {
-    addRecord({ value: "cleared", type: "output" });
+    stdOut("cleared");
     clear();
   };
 
@@ -25,10 +25,10 @@ const useCommand = () => {
     const [command, ...args] = input.split(" ");
     const name = command.toLowerCase();
 
-    addRecord({ value: input, type: "input" });
+    stdIn(input);
 
     if (!Object.keys(commands).includes(name)) {
-      addRecord({ value: BAD_COMMAND, type: "output" });
+      stdOut(BAD_COMMAND);
       return;
     }
 

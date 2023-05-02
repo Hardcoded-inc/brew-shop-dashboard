@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import useTerminal from "./useTerminal";
 
 const useFlag = (currentMission) => {
-  const { addRecord } = useTerminal();
+  const { stdOut } = useTerminal();
   const dispatch = useDispatch();
   const currentFlag = currentMission?.flags.find(({ done }) => !done);
 
@@ -23,10 +23,7 @@ const useFlag = (currentMission) => {
     const isCorrect = compareAnswers(value, currentFlag.value);
     if (isCorrect) dispatch(acceptFlag());
 
-    addRecord({
-      value: `Provided flag is <b>${isCorrect ? "correct" : "incorrect"}<b>`,
-      type: "output",
-    });
+    stdOut(`Provided flag is <b>${isCorrect ? "correct" : "incorrect"}<b>`);
   };
   return { checkFlag };
 };
