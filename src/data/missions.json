@@ -3,7 +3,7 @@
   "list": [
     {
       "id": 1,
-      "title": "Mission 1",
+      "title": "SQL Injections",
       "description": "some desc for Mission 1",
       "flags": [
         {
@@ -31,7 +31,7 @@
     },
     {
       "id": 2,
-      "title": "Mission 2",
+      "title": "What is this?",
       "description": "some desc for Mission 2",
       "flags": [
         {
@@ -52,7 +52,7 @@
     },
     {
       "id": 3,
-      "title": "Mission 3",
+      "title": "XSS so scary",
       "description": "some desc for Mission 3",
       "flags": [
         {
@@ -73,7 +73,7 @@
     },
     {
       "id": 4,
-      "title": "Mission 4",
+      "title": "Flip it over",
       "description": "some desc for Mission 4",
       "flags": [
         {

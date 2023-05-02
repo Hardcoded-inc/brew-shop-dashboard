@@ -26,8 +26,12 @@ const useMissions = () => {
 
   const getMissions = () => {
     const missionsData = missions.map(
-      ({ id, title, description, flags }) =>
-        `${id} - ${title} - ${description} - ${missionProgress(flags)}`
+      ({ id, title, description, flags }) => `
+  [${id}] ${title}
+  ---
+  Brief: ${description}
+  Progress: ${missionProgress(flags)}
+ `
     );
 
     return missionsData.join("\n");
