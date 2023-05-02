@@ -9,11 +9,13 @@ const useFlag = (missionIndex, flagIndex, userAnswer) => {
     (state) => state.missions.list[missionIndex].flags[flagIndex].answer
   );
 
-  if (compareAnswers(userAnswer, savedAnswer)) {
-    dispatch(setFlagTrue(missionIndex, flagIndex, answer));
-    addRecord({ value: `Provided flag is <b>correct<b>`, type: "output" });
-  } else {
-    addRecord({ value: `Provided flag is <b>incorrect<b>`, type: "output" });
+  const checkFlag = (value) => {
+    if (compareAnswers(value, savedAnswer)) {
+      dispatch(setFlagTrue(missionIndex, flagIndex, answer));
+      addRecord({ value: `Provided flag is <b>correct<b>`, type: "output" });
+    } else {
+      addRecord({ value: `Provided flag is <b>incorrect<b>`, type: "output" });
+    }
   }
 };
 
