@@ -7,7 +7,12 @@ const useTerminal = () => {
   const addRecord = (record) => dispatch(pushRecord(record));
   const clear = () => dispatch(reset());
 
-  return { records, addRecord, clear };
+  // TODO: Refactor app to use stdOut and stdIn
+  const stdOut = (value) => addRecord({ value, type: "output" });
+  const stdIn = (value) => addRecord({ value, type: "input" });
+
+  // addRecord is deprecated, use stdOut and stdIn instead
+  return { records, addRecord, clear, stdOut, stdIn };
 };
 
 export default useTerminal;
