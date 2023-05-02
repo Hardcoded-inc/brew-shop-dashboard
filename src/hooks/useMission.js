@@ -1,14 +1,8 @@
 import { useSelector } from "react-redux";
 
 const useMission = () => {
-  const currentMissionId = useSelector(
-    (state) => state.missions.selectedMission
-  );
-
-  const currentMission = () =>
-    currentMissionId
-      ? useSelector((state) => state.missions.list[missionIndex])
-      : null;
+  const currentMission = 
+      useSelector((state) => state.missions.list.find( ({ id }) => id === state.missions.currentMissionId))
 
   const currentFlag = () =>
     currentMission ? currentMission.flags.find((flag) => !flag.isValid) : null;
