@@ -34,8 +34,9 @@ const useMission = () => {
     ).length;
     const totalCount = currentMission.flags.length;
 
-    const progressBar = Array(totalCount).fill("|");
-    progressBar.fill("-", completedCount);
+    const progressBar = Array(totalCount).fill("▓");
+    progressBar.fill("░", completedCount);
+
 
     return `${progressBar.join("")} ${completedCount}/${totalCount}`;
   };
