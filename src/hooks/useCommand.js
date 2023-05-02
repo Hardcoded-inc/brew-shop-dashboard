@@ -4,17 +4,22 @@ import useMissions from "./useMissions";
 
 const useCommand = () => {
   const { stdIn, stdOut, clear } = useTerminal();
-  const { getMissions } = useMissions();
+  const { getMissions, selectMission } = useMissions();
 
   const handleHelp = () => stdOut(MANUAL);
   const handleClear = () => clear();
   const handleList = () => stdOut(getMissions());
+  const handleSelect = (args) => {
+    const id = parseInt(args[0]);
+    if (isNaN(id)) return stdOut(`err: invalid arg\n  select [MISSION ID]`);
+    stdOut(selectMission(id));
+  };
 
   // TODO: Implement those commands
   const commands = {
     help: handleHelp,
     list: handleList,
-    select: (argsList) => "Select command output.",
+    select: handleSelect,
     status: (argsList) => "Status command output.",
     flag: (argsList) => "List command output.",
     clear: handleClear,

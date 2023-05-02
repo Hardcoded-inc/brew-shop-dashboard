@@ -1,19 +1,19 @@
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { setMissionId } from "../redux/missions";
 
 // TODO: Should be based on window width
 const BAR_LENGTH = 30;
 
 const useMissions = () => {
+  const dispatch = useDispatch();
   const missions = useSelector((state) => state.missions.list);
   const currentMission = useSelector((state) =>
-    state.missions.list.find(({ id }) => id === state.missions.currentMissionId)
+    state.missions.list.find(
+      ({ id }) => id === state.missions.selectedMissionId
+    )
   );
 
   const missionProgress = (flags) => {
-    // if (!currentMission) {
-    //   return null;
-    // }
-
     const completedCount = flags.filter((flag) => flag.done).length;
     const totalCount = flags.length;
     const filled = Math.floor((completedCount / totalCount) * BAR_LENGTH);
@@ -25,21 +25,31 @@ const useMissions = () => {
   };
 
   const getMissions = () => {
-    const missionsData = missions.map(
-      ({ id, title, description, flags }) => `
+    return missions
+      .map(
+        ({ id, title, description, flags }) => `
   [${id}] ${title}
   ---
   Brief: ${description}
   Progress: ${missionProgress(flags)}
  `
-    );
+      )
+      .join("\n");
+  };
 
-    return missionsData.join("\n");
+  const selectMission = (id) => {
+    const mission = missions.find((m) => m.id === parseInt(id));
+    if (mission) {
+      dispatch(setMissionId(id));
+      return `Mission "${mission.title}" selected.`;
+    } else {
+      return `Mission with id "${id}" not found.`;
+    }
   };
 
   return {
     getMissions,
-    // setCurrentMission,
+    selectMission,
     currentMission,
     // currentFlag,
     // nextFlag,
