@@ -1,10 +1,12 @@
-import useTerminal from "./useTerminal";
 import MANUAL from "../data/manual";
+import useTerminal from "./useTerminal";
 import useMissions from "./useMissions";
+import useFlag from "./useFlag";
 
 const useCommand = () => {
   const { stdIn, stdOut, clear } = useTerminal();
-  const { getMissions, selectMission } = useMissions();
+  const { getMissions, selectMission, currentMission } = useMissions();
+  const { checkFlag } = useFlag(currentMission);
 
   const handleHelp = () => stdOut(MANUAL);
   const handleClear = () => clear();
@@ -14,6 +16,12 @@ const useCommand = () => {
     if (isNaN(id)) return stdOut(`err: invalid arg\n  select [MISSION ID]`);
     stdOut(selectMission(id));
   };
+  const handleFlag = (args) => {
+    const value = args[0];
+    if (!currentMission) return stdOut(`err: Select mission!`);
+    if (!value) return stdOut(`err: missing arg\n  flag [FLAG VALUE]`);
+    checkFlag(value);
+  };
 
   // TODO: Implement those commands
   const commands = {
@@ -21,7 +29,7 @@ const useCommand = () => {
     list: handleList,
     select: handleSelect,
     status: (argsList) => "Status command output.",
-    flag: (argsList) => "List command output.",
+    flag: handleFlag,
     clear: handleClear,
   };
 

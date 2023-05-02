@@ -48,6 +48,7 @@ const useMissions = () => {
   };
 
   return {
+    currentMission,
     getMissions,
     selectMission,
     currentMission,
