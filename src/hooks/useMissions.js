@@ -1,6 +1,7 @@
 import { useSelector } from "react-redux";
 
-const BAR_LENGTH = 10;
+// TODO: Should be based on window width
+const BAR_LENGTH = 30;
 
 const useMissions = () => {
   const missions = useSelector((state) => state.missions.list);
@@ -15,16 +16,10 @@ const useMissions = () => {
 
     const completedCount = flags.filter((flag) => flag.done).length;
     const totalCount = flags.length;
+    const filled = Math.floor((completedCount / totalCount) * BAR_LENGTH);
 
-    const progressBar = Array(totalCount).fill("▓");
-    progressBar.fill("░", completedCount);
-
-    // // console log all variables for debugging
-    // console.log("currentMission", currentMission);
-    // console.log("flags", flags);
-    // console.log("completedCount", completedCount);
-    // console.log("totalCount", totalCount);
-    // console.log("progressBar", progressBar);
+    const progressBar = Array(BAR_LENGTH).fill("▓");
+    progressBar.fill("░", filled);
 
     return `${progressBar.join("")} ${completedCount}/${totalCount}`;
   };
