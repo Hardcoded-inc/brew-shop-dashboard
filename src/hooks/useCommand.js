@@ -6,7 +6,7 @@ export const commands = {
   select: (argsList) => "Select command output.",
   status: (argsList) => "Status command output.",
   flag: (argsList) => "List command output.",
-  //TODO: add 'clear' command to clear the entire termialn output
+  clear: (argsList) => "Clear command output.",
 };
 
 const BAD_COMMAND =
