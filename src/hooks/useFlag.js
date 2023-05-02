@@ -17,6 +17,7 @@ const useFlag = (missionIndex, flagIndex, userAnswer) => {
       addRecord({ value: `Provided flag is <b>incorrect<b>`, type: "output" });
     }
   }
+  return { checkFlag }
 };
 
 export default useFlag;
