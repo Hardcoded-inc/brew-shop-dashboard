@@ -37,6 +37,28 @@ const useMissions = () => {
       .join("\n");
   };
 
+  const getStatus = () => {
+    if (!currentMission)
+      return "No mission selected. Use 'select [MISSION ID]'";
+
+    const { id, title, description, flags } = currentMission;
+    const doneFlags = flags.filter((flag) => flag.done);
+    const currentFlag = flags.find((flag) => !flag.done);
+
+    const flagsInfo = [...doneFlags, currentFlag]
+      .map(({ question, done }) => `  > ${done ? "✅" : "🟡"} ${question}`)
+      .join("\n");
+
+    return `
+  Your current mission: "${title}" [${id}]
+  ---
+  Brief: ${description}
+  Progress: ${missionProgress(flags)}
+
+${flagsInfo}
+ `;
+  };
+
   const selectMission = (id) => {
     const mission = missions.find((m) => m.id === parseInt(id));
     if (mission) {
@@ -51,9 +73,7 @@ const useMissions = () => {
     currentMission,
     getMissions,
     selectMission,
-    currentMission,
-    // currentFlag,
-    // nextFlag,
+    getStatus,
   };
 };
 

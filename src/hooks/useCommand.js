@@ -5,12 +5,14 @@ import useFlag from "./useFlag";
 
 const useCommand = () => {
   const { stdIn, stdOut, clear } = useTerminal();
-  const { getMissions, selectMission, currentMission } = useMissions();
+  const { getMissions, selectMission, currentMission, getStatus } =
+    useMissions();
   const { checkFlag } = useFlag(currentMission);
 
   const handleHelp = () => stdOut(MANUAL);
   const handleClear = () => clear();
   const handleList = () => stdOut(getMissions());
+  const handleStatus = () => stdOut(getStatus());
   const handleSelect = (args) => {
     const id = parseInt(args[0]);
     if (isNaN(id)) return stdOut(`err: invalid arg\n  select [MISSION ID]`);
@@ -23,12 +25,12 @@ const useCommand = () => {
     checkFlag(value);
   };
 
-  // TODO: Implement those commands
+  // TODO: Add hint command
   const commands = {
     help: handleHelp,
     list: handleList,
     select: handleSelect,
-    status: (argsList) => "Status command output.",
+    status: handleStatus,
     flag: handleFlag,
     clear: handleClear,
   };
