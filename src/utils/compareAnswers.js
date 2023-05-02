@@ -1,7 +1,7 @@
 import md5 from "md5";
 
-const compareAnswers = (userAnswer, storedAnswer) => {
-  return md5(userAnswer).toString() === storedAnswer;
+const compareAnswers = (answer, hash) => {
+  return md5(answer).toString() === hash;
 };
 
 export default compareAnswers;

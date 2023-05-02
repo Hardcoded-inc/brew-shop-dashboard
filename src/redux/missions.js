@@ -7,13 +7,14 @@ export const missionsSlice = createSlice({
   name: "missions",
   initialState,
   reducers: {
-    setFlagTrue: (state, { missionIndex, flagIndex, answer }) => {
-      const pickedFlag = state.list[missionIndex].flags[flagIndex];
-      pickedFlag.user_answer = answer;
-      pickedFlag.isValid = true;
+    acceptFlag: (state) => {
+      const currentMission = state.list.find(
+        ({ id }) => id === state.currentMissionId
+      );
+      currentMission.flags.find(({ done }) => !done).done = true;
     },
     selectMission: (state, { payload }) => {
-      state.selectedMission = payload;
+      state.selectedMissionId = payload;
     },
     reset: () => {
       return initialState;
@@ -21,7 +22,5 @@ export const missionsSlice = createSlice({
   },
 });
 
-// TODO: Probably it would be nice to create some (useMissions) hook to easily access state
-
-export const { setFlagTrue, selectMission, reset } = missionsSlice.actions;
+export const { acceptFlag, selectMission, reset } = missionsSlice.actions;
 export default missionsSlice.reducer;
