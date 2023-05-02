@@ -51,7 +51,7 @@
   /* caret-color: transparent; */
 }
 
-/* 
+/*
 .terminal-caret:focus-within::after{
   content: "";
   height: 20px;
@@ -96,14 +96,15 @@
   justify-content: start;
 }
 
-
 .terminal-input:focus + .terminal-caret {
   border-left: 2px solid #fff;
 }
 
+.terminal-output--green {
+  color: greenyellow;
+}
 
 pre {
-  color: greenyellow;
   margin: 0 8px 0 0;
 }
 

@@ -1,16 +1,15 @@
 import useTerminal from "./useTerminal";
+import MANUAL from "../data/manual";
 
 const useCommand = () => {
   const { stdIn, stdOut, clear } = useTerminal();
 
-  const handleClear = () => {
-    stdOut("cleared");
-    clear();
-  };
+  const handleHelp = () => stdOut(MANUAL);
+  const handleClear = () => clear();
 
   // TODO: Implement those commands
   const commands = {
-    help: (argsList) => "Help command output.",
+    help: handleHelp,
     list: (argsList) => "List command output.",
     select: (argsList) => "Select command output.",
     status: (argsList) => "Status command output.",

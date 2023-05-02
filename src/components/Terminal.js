@@ -43,11 +43,11 @@ const Terminal = () => {
 
   // TODO: Those components should be extracted to separate files
   const outputItem = (val) => (
-    <div className="terminal-output__single">{val}</div>
+    <pre className="terminal-output__single">{val}</pre>
   );
   const inputItem = (val) => (
     <div className="terminal-output__single">
-      <pre>
+      <pre className="terminal-output--green">
         <b>root@Kali</b>:<span className="terminal-caret__span">~</span>$
       </pre>
       {val}
@@ -70,13 +70,12 @@ const Terminal = () => {
       </div>
       <div className="terminal-window" onClick={handleClickOnTerminal}>
         <div className="terminal-output" id="terminal-output-id">
-          <pre>$</pre>
           {records.map(({ value, type }) =>
             type === "input" ? inputItem(value) : outputItem(value)
           )}
         </div>
         <div className="terminal-caret">
-          <pre>
+          <pre className="terminal-output--green">
             <b>root@Kali</b>:<span className="terminal-caret__span">~</span>$
           </pre>
           <input
