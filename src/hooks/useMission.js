@@ -1,22 +1,9 @@
 import { useSelector } from "react-redux";
 
 const useMission = () => {
-  const currentMission = 
-      useSelector((state) => state.missions.list.find( ({ id }) => id === state.missions.currentMissionId))
-
-  const currentFlag = () =>
-    currentMission ? currentMission.flags.find((flag) => !flag.isValid) : null;
-
-  const nextFlag = () => {
-    if (!currentMission || !currentFlag) null;
-
-    const currentIndex = currentMission.flags.indexOf(currentFlag);
-    const nextIndex = currentIndex + 1;
-
-    if (nextIndex >= currentMission.flags.length) null;
-
-    return currentMission.flags[nextIndex];
-  };
+  const currentMission = useSelector((state) =>
+    state.missions.list.find(({ id }) => id === state.missions.currentMissionId)
+  );
 
   const status = () => {
     if (!currentMission) {
@@ -30,7 +17,6 @@ const useMission = () => {
 
     const progressBar = Array(totalCount).fill("▓");
     progressBar.fill("░", completedCount);
-
 
     return `${progressBar.join("")} ${completedCount}/${totalCount}`;
   };
