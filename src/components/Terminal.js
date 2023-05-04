@@ -48,7 +48,7 @@ const Terminal = () => {
   const inputItem = (val) => (
     <div className="terminal-output__single">
       <pre className="terminal-output--green">
-        <b>root@Kali</b>:<span className="terminal-caret__span">~</span>$
+        <b>brewshop@user</b>:<span className="terminal-caret__span">~</span>$
       </pre>
       {val}
     </div>
@@ -56,17 +56,9 @@ const Terminal = () => {
 
   return (
     // TODO: Extract css from here
-    <div
-      className="terminal"
-      style={{
-        border:
-          document.activeElement === inputRef.current
-            ? "2px solid #ffffff"
-            : "2px solid #020202",
-      }}
-    >
+    <div className="terminal">
       <div className="terminal-header">
-        <span>root@Kali: terminal ~</span>
+        <span>brewshop@user: terminal ~</span>
       </div>
       <div className="terminal-window" onClick={handleClickOnTerminal}>
         <div className="terminal-output" id="terminal-output-id">
@@ -76,7 +68,8 @@ const Terminal = () => {
         </div>
         <div className="terminal-caret">
           <pre className="terminal-output--green">
-            <b>root@Kali</b>:<span className="terminal-caret__span">~</span>$
+            <b>brewshop@user</b>:<span className="terminal-caret__span">~</span>
+            $
           </pre>
           <input
             className="terminal-input"

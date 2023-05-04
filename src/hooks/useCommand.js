@@ -1,4 +1,4 @@
-import MANUAL from "../data/manual";
+import { MANUAL } from "../data/texts";
 import useTerminal from "./useTerminal";
 import useMissions from "./useMissions";
 import useFlag from "./useFlag";
