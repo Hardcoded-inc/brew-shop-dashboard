@@ -99,7 +99,7 @@
         },
         {
           "flagName": "XSS/3",
-          "question": "Using XSS, send any messessage to the server ... and listen on the port :8000. If the process is successful, you will receive your messesage and the flag.", //TODO: provide server name
+          "question": "Using XSS, send any messessage to the server ... and listen on the port :8000. If the process is successful, you will receive your messesage and the flag.",
           "hint": "Create JS code which sends any messesage to the given server IP. You can use 'XMLHttpRequest'. Using e.g. 'netcat -l <PORT>' or 'socat TCP-LISTEN:<PORT>' listen for the response from the server",
           "value": "xxx",
           "done": false
