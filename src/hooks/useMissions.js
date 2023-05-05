@@ -69,11 +69,22 @@ ${flagsInfo}
     }
   };
 
+  const getHint = () => {
+    if (!currentMission)
+      return "No mission selected. Use 'select [MISSION ID]'";
+
+    const { flags } = currentMission;
+    const currentFlag = flags.find((flag) => !flag.done);
+
+    return `Hint: ${currentFlag.hint}`;
+  };
+
   return {
     currentMission,
     getMissions,
     selectMission,
     getStatus,
+    getHint,
   };
 };
 
