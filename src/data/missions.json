@@ -129,21 +129,21 @@
     },
     {
       "id": 4,
-      "title": "Flip it over",
-      "description": "some desc for Mission 4",
+      "title": "Explore the surrounding",
+      "description": "Time for something special. Since you're good at finding vulnerabilities, maybe you could try to hack this application as well?",
       "flags": [
         {
-          "flagName": "Flag 1",
-          "question": "Test question for Flag 1?",
-          "hint": "some hint",
+          "flagName": "EXPLORE/1",
+          "question": "What is the name of file where we store all the data for missions?",
+          "hint": "It's just frontend app, you have all the permisions to view the code",
           "value": "5c5b5e5a5f364a13e0d0e6d73b8e2d08",
           "done": false
         },
         {
-          "flagName": "Flag 2",
-          "question": "Test question for Flag 2?",
-          "hint": "some hint",
-          "value": "9d5792f8e1c6bbd1e59b07c3cf3db755",
+          "flagName": "EXPLORE/2",
+          "question": "There is no good or bad answers. Pick your own way to capture the last flag",
+          "hint": "You pick the rules. Dig in code, alter it or take some fun with encryption.",
+          "value": "9d5792 | YOU GOT US! | 3db755",
           "done": false
         }
       ]
