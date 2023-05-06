@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { STARTING_SEQUENCE as value } from "../data/texts";
 
-const initialState = [];
+const initialState = [{ value, type: "output" }];
 
 export const terminalSlice = createSlice({
   name: "terminal",

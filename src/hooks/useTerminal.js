@@ -7,7 +7,10 @@ const useTerminal = () => {
   const addRecord = (record) => dispatch(pushRecord(record));
   const clear = () => dispatch(reset());
 
-  return { records, addRecord, clear };
+  const stdOut = (value) => addRecord({ value, type: "output" });
+  const stdIn = (value) => addRecord({ value, type: "input" });
+
+  return { records, clear, stdOut, stdIn };
 };
 
 export default useTerminal;

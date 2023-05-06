@@ -9,11 +9,11 @@ export const missionsSlice = createSlice({
   reducers: {
     acceptFlag: (state) => {
       const currentMission = state.list.find(
-        ({ id }) => id === state.currentMissionId
+        ({ id }) => id === state.selectedMissionId
       );
       currentMission.flags.find(({ done }) => !done).done = true;
     },
-    selectMission: (state, { payload }) => {
+    setMissionId: (state, { payload }) => {
       state.selectedMissionId = payload;
     },
     reset: () => {
@@ -22,5 +22,5 @@ export const missionsSlice = createSlice({
   },
 });
 
-export const { acceptFlag, selectMission, reset } = missionsSlice.actions;
+export const { acceptFlag, setMissionId, reset } = missionsSlice.actions;
 export default missionsSlice.reducer;

@@ -1,35 +1,56 @@
+import { MANUAL } from "../data/texts";
 import useTerminal from "./useTerminal";
-
-// TODO: Implement commands
-export const commands = {
-  help: (argsList) => "Help command output.",
-  list: (argsList) => "List command output.",
-  select: (argsList) => "Select command output.",
-  status: (argsList) => "Status command output.",
-  flag: (argsList) => "List command output.",
-  clear: (argsList) => "Clear command output.",
-};
-
-const BAD_COMMAND =
-  "Invalid command. Available commands: " + Object.keys(commands).join(", ");
+import useMissions from "./useMissions";
+import useFlag from "./useFlag";
 
 const useCommand = () => {
-  const { addRecord } = useTerminal();
+  const { stdIn, stdOut, clear } = useTerminal();
+  const { getMissions, selectMission, currentMission, getStatus, getHint } =
+    useMissions();
+  const { checkFlag } = useFlag(currentMission);
+
+  const handleHelp = () => stdOut(MANUAL);
+  const handleClear = () => clear();
+  const handleList = () => stdOut(getMissions());
+  const handleStatus = () => stdOut(getStatus());
+  const handleSelect = (args) => {
+    const id = parseInt(args[0]);
+    if (isNaN(id)) return stdOut(`err: invalid arg\n  select [MISSION ID]`);
+    stdOut(selectMission(id));
+  };
+  const handleFlag = (args) => {
+    const value = args[0];
+    if (!currentMission) return stdOut(`err: Select mission!`);
+    if (!value) return stdOut(`err: missing arg\n  flag [FLAG VALUE]`);
+    checkFlag(value);
+  };
+  const handleHint = () => stdOut(getHint());
+
+  const commands = {
+    help: handleHelp,
+    list: handleList,
+    select: handleSelect,
+    status: handleStatus,
+    flag: handleFlag,
+    clear: handleClear,
+    hint: handleHint,
+  };
+
+  const BAD_COMMAND =
+    "Invalid command. Available commands: " + Object.keys(commands).join(", ");
 
   const applyCommand = (input) => {
     const [command, ...args] = input.split(" ");
     const name = command.toLowerCase();
 
-    addRecord({ value: input, type: "input" });
+    stdIn(input);
 
     if (!Object.keys(commands).includes(name)) {
-      addRecord({ value: BAD_COMMAND, type: "output" });
+      stdOut(BAD_COMMAND);
       return;
     }
 
-    const out = commands[name](args);
-
-    addRecord({ value: out, type: "output" });
+    commands[name](args);
   };
 
   return { applyCommand };

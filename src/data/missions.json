@@ -3,91 +3,147 @@
   "list": [
     {
       "id": 1,
-      "title": "Mission 1",
-      "description": "some desc for Mission 1",
+      "title": "Effectiveness lies in simplicity",
+      "description": "Break the security of the e-commerce system and obtain the complete data of one of the buyers, along with the last shipment number and tracking code, by executing an SQL Injection attack.",
       "flags": [
         {
-          "flag_name": "Flag 1",
-          "question": "Test question",
-          "hint": "some hint",
-          "value": "4f7044c062e4b46d28c4e85f6a928f8a",
+          "flagName": "SQL/1",
+          "question": "Enter the HTML ID of the vulnerable text field",
+          "hint": "Look for the search bar in the 'My orders' section of the user panel and inspect the HTML.",
+          "value": "xxx",
           "done": false
         },
         {
-          "flag_name": "Flag 2",
-          "question": "Test question",
-          "hint": "some hint",
-          "value": "c0d08fb9e17c0f00b88d623c5e524b04",
+          "flagName": "SQL/2",
+          "question": "Enter the name of the table where user data is stored",
+          "hint": "Start by creating a simple SQL code that will retrieve information from the database. Once you have access to the database, retrieve a list of tables in the database.",
+          "value": "xxx",
           "done": false
         },
         {
-          "flag_name": "Flag 3",
-          "question": "Test question",
-          "hint": "some hint",
-          "value": "c0d08fb9e17c0f00b88d623c5e524b04",
+          "flagName": "SQL/3",
+          "question": "Enter the last name of the user with ID = 420",
+          "hint": "Find the table that stores users, and then retrieve information about a specific user with a certain ID.",
+          "value": "xxx",
+          "done": false
+        },
+        {
+          "flagName": "SQL/4",
+          "question": "Enter the ID of the user's (ID = 420) last shipment",
+          "hint": "Find the table that stores all orders, and then retrieve only those that were placed by a specific user with a certain ID, listing them in descending order by date",
+          "value": "xxx",
+          "done": false
+        },
+        {
+          "flagName": "SQL/5",
+          "question": "Enter the tracking number of the shipment whose ID you provided in the previous task",
+          "hint": "Retrieve all data for an order with a specific ID, and then search for the tracking number within it.",
+          "value": "xxx",
           "done": false
         }
       ]
     },
     {
       "id": 2,
-      "title": "Mission 2",
-      "description": "some desc for Mission 2",
+      "title": "Take control of payments",
+      "description": "Test your skills and break into the security of an e-commerce platform. Gain control over payments by identifying vulnerabilities in the admin panel and analyzing the HTML code. Will you be able to change the order status?",
       "flags": [
         {
-          "flag_name": "Flag 1",
-          "question": "Test question",
-          "hint": "some hint",
-          "value": "97f5a0280278cbbfd9fbf0da09b18d3e",
+          "flagName": "ADMIN/1",
+          "question": "Enter the name of the software on which the e-commerce platform is built.",
+          "hint": "Analyze the code yourself or use ready-made browser plugins that will provide you with information about the technologies used.",
+          "value": "xxx",
           "done": false
         },
         {
-          "flag_name": "Flag 2",
-          "question": "Test question",
-          "hint": "some hint",
-          "value": "b9e1f05cefe67d6b27e8e0387a3de3d3",
+          "flagName": "ADMIN/2",
+          "question": "Enter the password for the default administrator account in this software.",
+          "hint": "Try to find the login path to the CMS panel and default data for the administrator account on the internet or in the documentation.",
+          "value": "xxx",
+          "done": false
+        },
+        {
+          "flagName": "ADMIN/3",
+          "question": "Provide the HTML ID of the button responsible for changing the payment status in an order.",
+          "hint": "Find the place in the CMS where the administrator can edit the orders of buyers.",
+          "value": "xxx",
+          "done": false
+        },
+        {
+          "flagName": "ADMIN/4",
+          "question": "Change the payment status to 'Paid', and then enter the flag that was displayed in the browser console.",
+          "hint": "Try to modify the HTML / JavaScript code in such a way as to bypass the security measures for changing the payment status.",
+          "value": "xxx",
           "done": false
         }
       ]
     },
     {
       "id": 3,
-      "title": "Mission 3",
-      "description": "some desc for Mission 3",
+      "title": "Master of puppets",
+      "description": "Exploit a vulnerability in the system that will allow you to take down all users at once. Act quickly and precisely, combine different technologies, and even write your own code.",
       "flags": [
         {
-          "flag_name": "Flag 1",
-          "question": "Test question",
-          "hint": "some hint",
-          "value": "08e12ecf15b0250aa1c8b749f8397d2c",
+          "flagName": "XSS/1",
+          "question": "Find injection-vulnerable input and enter its HTML ID",
+          "hint": "Think about the place where everybody can receive your XSS code. Womewhere where you can share your thoughts.",
+          "value": "xxx",
           "done": false
         },
         {
-          "flag_name": "Flag 2",
-          "question": "Test question",
-          "hint": "some hint",
-          "value": "d05b8c76eb6c0d6c3db3f3f58083b1f9",
-          "done": ""
+          "flagName": "XSS/2",
+          "question": "Using XSS, display the name of this flag in the console: 'XSS/2'. If the process is successful, you will receive the flag.",
+          "hint": "Create simple JS code which prints given text in the console, then try it out in the vulnerable area",
+          "value": "xxx",
+          "done": false
+        },
+        {
+          "flagName": "XSS/3",
+          "question": "Using XSS, send any messessage to the server ... and listen on the port :8000. If the process is successful, you will receive your messesage and the flag.",
+          "hint": "Create JS code which sends any messesage to the given server IP. You can use 'XMLHttpRequest'. Using e.g. 'netcat -l <PORT>' or 'socat TCP-LISTEN:<PORT>' listen for the response from the server",
+          "value": "xxx",
+          "done": false
+        },
+        {
+          "flagName": "XSS/4",
+          "question": "Alter your XSS code to send user' session token to the server ... . If the process is successful, you will receive other user' token and the flag.",
+          "hint": "Replace your previous random messessage with the user' session token. You can find it in the browser cookies.",
+          "value": "xxx",
+          "done": false
+        },
+        {
+          "flagName": "XSS/2",
+          "question": "Take controll over user' account. If the process is successful, you will receive the flag.",
+          "hint": "Replace yours session token with stolen one. You can simply do it using 'Inspect' functionality in your browser",
+          "value": "xxx",
+          "done": false
+        },
+        {
+          "flagName": "XSS/2",
+          "question": "Make an order using stolen account. If the process is successful, you will receive the flag.",
+          "hint": "Being logged into stolen account, add few items to the basket and make an order.",
+          "value": "xxx",
+          "done": false
         }
       ]
     },
     {
       "id": 4,
-      "title": "Mission 4",
-      "description": "some desc for Mission 4",
+      "title": "Explore the surrounding",
+      "description": "Time for something special. Since you're good at finding vulnerabilities, maybe you could try to hack this application as well?",
       "flags": [
         {
-          "flag_name": "Flag 1",
-          "question": "Test question",
-          "hint": "some hint",
+          "flagName": "EXPLORE/1",
+          "question": "What is the name of file where we store all the data for missions?",
+          "hint": "It's just frontend app, you have all the permisions to view the code",
           "value": "5c5b5e5a5f364a13e0d0e6d73b8e2d08",
           "done": false
         },
         {
-          "flag_name": "Flag 2",
-          "question": "Test question",
-          "hint": "some hint",
-          "value": "9d5792f8e1c6bbd1e59b07c3cf3db755",
+          "flagName": "EXPLORE/2",
+          "question": "There is no good or bad answers. Pick your own way to capture the last flag",
+          "hint": "You pick the rules. Dig in code, alter it or take some fun with encryption.",
+          "value": "9d5792 | YOU GOT US! | 3db755",
           "done": false
         }
       ]
