@@ -1,11 +1,11 @@
 import React from "react";
 import {
-  FiTrash2,
   FiChevronDown,
   FiWifi,
   FiBluetooth,
   FiBattery,
-  FiGithub
+  FiGithub,
+  FiList,
 } from "react-icons/fi";
 
 const Header = () => {
@@ -40,11 +40,19 @@ const Header = () => {
         <FiWifi />
         <FiBluetooth />
         <FiBattery />
+
+        <a
+          className="system-header__right--span"
+          href="https://owasp.org/Top10/"
+          style={{ color: "white", textDecoration: "none" }}
+        >
+          <FiList />
+          <span>OWASP&nbsp;TOP10</span>
+        </a>
+
         <span className="system-header__right--span">
-          Clean&nbsp;session <FiTrash2 />
-        </span>
-        <span className="system-header__right--span">
-          Source&nbsp;code <FiGithub />
+          <FiGithub />
+          Source&nbsp;code
         </span>
       </div>
     </div>
