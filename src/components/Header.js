@@ -45,6 +45,7 @@ const Header = () => {
           className="system-header__right--span"
           href="https://owasp.org/Top10/"
           style={{ color: "white", textDecoration: "none" }}
+          target="_blank"
         >
           <FiList />
           <span>OWASP&nbsp;TOP10</span>
