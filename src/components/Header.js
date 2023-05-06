@@ -51,10 +51,15 @@ const Header = () => {
           <span>OWASP&nbsp;TOP10</span>
         </a>
 
-        <span className="system-header__right--span">
+        <a
+          className="system-header__right--span"
+          href="https://github.com/Hardcoded-inc/brew-shop-platform"
+          style={{ color: "white", textDecoration: "none" }}
+          target="_blank"
+        >
           <FiGithub />
           Source&nbsp;code
-        </span>
+        </a>
       </div>
     </div>
   );
