@@ -43,12 +43,12 @@ const Terminal = () => {
 
   // TODO: Those components should be extracted to separate files
   const outputItem = (val) => (
-    <div className="terminal-output__single">{val}</div>
+    <pre className="terminal-output__single">{val}</pre>
   );
   const inputItem = (val) => (
     <div className="terminal-output__single">
-      <pre>
-        <b>root@Kali</b>:<span className="terminal-caret__span">~</span>$
+      <pre className="terminal-output--green">
+        <b>brewshop@user</b>:<span className="terminal-caret__span">~</span>$
       </pre>
       {val}
     </div>
@@ -56,28 +56,20 @@ const Terminal = () => {
 
   return (
     // TODO: Extract css from here
-    <div
-      className="terminal"
-      style={{
-        border:
-          document.activeElement === inputRef.current
-            ? "2px solid #ffffff"
-            : "2px solid #020202",
-      }}
-    >
+    <div className="terminal">
       <div className="terminal-header">
-        <span>root@Kali: terminal ~</span>
+        <span>brewshop@user: terminal ~</span>
       </div>
       <div className="terminal-window" onClick={handleClickOnTerminal}>
         <div className="terminal-output" id="terminal-output-id">
-          <pre>$</pre>
           {records.map(({ value, type }) =>
             type === "input" ? inputItem(value) : outputItem(value)
           )}
         </div>
         <div className="terminal-caret">
-          <pre>
-            <b>root@Kali</b>:<span className="terminal-caret__span">~</span>$
+          <pre className="terminal-output--green">
+            <b>brewshop@user</b>:<span className="terminal-caret__span">~</span>
+            $
           </pre>
           <input
             className="terminal-input"
