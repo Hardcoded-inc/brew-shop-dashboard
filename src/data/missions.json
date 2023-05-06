@@ -10,35 +10,35 @@
           "flagName": "SQL/1",
           "question": "Enter the HTML ID of the vulnerable text field",
           "hint": "Look for the search bar in the 'My orders' section of the user panel and inspect the HTML.",
-          "value": "9dd4e461268c8034f5c8564e155c67a6",
+          "value": "xxx",
           "done": false
         },
         {
           "flagName": "SQL/2",
           "question": "Enter the name of the table where user data is stored",
           "hint": "Start by creating a simple SQL code that will retrieve information from the database. Once you have access to the database, retrieve a list of tables in the database.",
-          "value": "9dd4e461268c8034f5c8564e155c67a6",
+          "value": "xxx",
           "done": false
         },
         {
           "flagName": "SQL/3",
           "question": "Enter the last name of the user with ID = 420",
           "hint": "Find the table that stores users, and then retrieve information about a specific user with a certain ID.",
-          "value": "9dd4e461268c8034f5c8564e155c67a6",
+          "value": "xxx",
           "done": false
         },
         {
           "flagName": "SQL/4",
           "question": "Enter the ID of the user's (ID = 420) last shipment",
           "hint": "Find the table that stores all orders, and then retrieve only those that were placed by a specific user with a certain ID, listing them in descending order by date",
-          "value": "9dd4e461268c8034f5c8564e155c67a6",
+          "value": "xxx",
           "done": false
         },
         {
           "flagName": "SQL/5",
           "question": "Enter the tracking number of the shipment whose ID you provided in the previous task",
           "hint": "Retrieve all data for an order with a specific ID, and then search for the tracking number within it.",
-          "value": "9dd4e461268c8034f5c8564e155c67a6",
+          "value": "xxx",
           "done": false
         }
       ]
