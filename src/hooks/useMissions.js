@@ -79,12 +79,33 @@ ${flagsInfo}
     return `Hint: ${currentFlag.hint}`;
   };
 
+  const getTakeaway = () => {
+    if (!currentMission)
+      return "No mission selected. Use 'select [MISSION ID]'";
+
+    const { takeaway, takeaway_urls } = currentMission;
+
+    const urlsList = takeaway_urls
+    .map((url, index) => `<li><a href="${url}" target="_blank" rel="noopener noreferrer">[${index + 1}] ${url}</a></li>`)
+    .join("");
+
+    return (
+      <div>
+        <p>Key takeaway:</p>
+        <p>{takeaway}</p>
+        <p>Learn more from here:</p>
+        <ul  dangerouslySetInnerHTML={{ __html: urlsList }} />
+      </div>
+    );
+};
+
   return {
     currentMission,
     getMissions,
     selectMission,
     getStatus,
     getHint,
+    getTakeaway,
   };
 };
 

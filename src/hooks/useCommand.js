@@ -5,7 +5,7 @@ import useFlag from "./useFlag";
 
 const useCommand = () => {
   const { stdIn, stdOut, clear } = useTerminal();
-  const { getMissions, selectMission, currentMission, getStatus, getHint } =
+  const { getMissions, selectMission, currentMission, getStatus, getHint, getTakeaway } =
     useMissions();
   const { checkFlag } = useFlag(currentMission);
 
@@ -25,6 +25,7 @@ const useCommand = () => {
     checkFlag(value);
   };
   const handleHint = () => stdOut(getHint());
+  const handleTakeaway = () => stdOut(getTakeaway());
 
   const commands = {
     help: handleHelp,
@@ -34,6 +35,7 @@ const useCommand = () => {
     flag: handleFlag,
     clear: handleClear,
     hint: handleHint,
+    takeaway: handleTakeaway,
   };
 
   const BAD_COMMAND =
