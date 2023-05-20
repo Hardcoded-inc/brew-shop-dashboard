@@ -26,7 +26,7 @@ const Terminal = () => {
 
   const handleChange = (e) => setInputValue(e.target.value);
 
-  const handleKeyDown = (e) => {
+  const  handleKeyDown = (e) => {
     if (e.key === "Enter") {
       if (inputValue !== "") {
         addToHistory(inputValue);
