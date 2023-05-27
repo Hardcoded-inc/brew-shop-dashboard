@@ -9,7 +9,6 @@ const useFlag = (currentMission) => {
   const currentFlag = currentMission?.flags.find(({ done }) => !done);
 
   const checkFlag = (value) => {
-    console.log(value, currentFlag.value);
     const isCorrect = compareAnswers(value, currentFlag.value);
     if (isCorrect) dispatch(acceptFlag());
 

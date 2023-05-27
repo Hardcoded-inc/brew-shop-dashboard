@@ -5,7 +5,7 @@ import useFlag from "./useFlag";
 
 const useCommand = () => {
   const { stdIn, stdOut, clear } = useTerminal();
-  const { getMissions, selectMission, currentMission, getStatus } =
+  const { getMissions, selectMission, currentMission, getStatus, getHint, getTakeaway } =
     useMissions();
   const { checkFlag } = useFlag(currentMission);
 
@@ -24,8 +24,9 @@ const useCommand = () => {
     if (!value) return stdOut(`err: missing arg\n  flag [FLAG VALUE]`);
     checkFlag(value);
   };
+  const handleHint = () => stdOut(getHint());
+  const handleTakeaway = () => stdOut(getTakeaway());
 
-  // TODO: Add hint command
   const commands = {
     help: handleHelp,
     list: handleList,
@@ -33,6 +34,8 @@ const useCommand = () => {
     status: handleStatus,
     flag: handleFlag,
     clear: handleClear,
+    hint: handleHint,
+    takeaway: handleTakeaway,
   };
 
   const BAD_COMMAND =

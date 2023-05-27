@@ -4,6 +4,9 @@ import useHistory from "../hooks/useHistory";
 import useCommand from "../hooks/useCommand";
 import useTerminal from "../hooks/useTerminal";
 
+import InputItem from "./Terminal/InputItem";
+import OutputItem from "./Terminal/OutputItem";
+
 const Terminal = () => {
   const [inputValue, setInputValue] = useState("");
   const { prevInput, nextInput, addToHistory } = useHistory();
@@ -23,7 +26,7 @@ const Terminal = () => {
 
   const handleChange = (e) => setInputValue(e.target.value);
 
-  const handleKeyDown = (e) => {
+  const  handleKeyDown = (e) => {
     if (e.key === "Enter") {
       if (inputValue !== "") {
         addToHistory(inputValue);
@@ -41,18 +44,6 @@ const Terminal = () => {
     }
   };
 
-  // TODO: Those components should be extracted to separate files
-  const outputItem = (val) => (
-    <pre className="terminal-output__single">{val}</pre>
-  );
-  const inputItem = (val) => (
-    <div className="terminal-output__single">
-      <pre className="terminal-output--green">
-        <b>brewshop@user</b>:<span className="terminal-caret__span">~</span>$
-      </pre>
-      {val}
-    </div>
-  );
 
   return (
     // TODO: Extract css from here
@@ -63,7 +54,7 @@ const Terminal = () => {
       <div className="terminal-window" onClick={handleClickOnTerminal}>
         <div className="terminal-output" id="terminal-output-id">
           {records.map(({ value, type }) =>
-            type === "input" ? inputItem(value) : outputItem(value)
+            type === "input" ? InputItem(value) : OutputItem(value)
           )}
         </div>
         <div className="terminal-caret">
