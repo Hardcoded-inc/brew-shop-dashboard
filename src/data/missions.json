@@ -7,7 +7,7 @@
       "description": "Break the security of the e-commerce system and obtain the complete data of one of the buyers, along with the last shipment number and tracking code, by executing an SQL Injection attack.",
       "takeaway": "This challenge teaches you about SQL Injection, a common vulnerability in web applications. By finding a vulnerability in an e-commerce website's search bar, you can execute malicious SQL code and gain access to the database, potentially obtaining sensitive data. This challenge implements two OWASP TOP 10 (2021) vulnerabilities: Broken Access Control (A01) and Injection (A03). By completing this challenge, you will gain an understanding of these vulnerabilities and learn about implementing proper security measures to prevent such attacks in the future.",
       "takeaway_urls": [
-        "https://owasp.org/Top10/A01_2021-Broken_Access_Control/", 
+        "https://owasp.org/Top10/A01_2021-Broken_Access_Control/",
         "https://owasp.org/Top10/A03_2021-Injection/"
       ],
       "flags": [
@@ -54,8 +54,8 @@
       "description": "Test your skills and break into the security of an e-commerce platform. Gain control over payments by identifying vulnerabilities in the admin panel and analyzing the HTML code. Will you be able to change the order status?",
       "takeaway": "This challenge will help you learn about two common web application vulnerabilities: Broken Access Control and Injection. Through this challenge, you will understand the potential consequences of exploiting these vulnerabilities and how to implement proper security measures to prevent such attacks in the future. You will also learn about the importance of deactivating default administrator accounts and implementing proper authorization and access control mechanisms. This challenge will give you a hands-on experience in identifying and exploiting vulnerabilities, and also demonstrate the importance of thorough testing and securing web applications before deploying them to production.",
       "takeaway_urls": [
-        "https://owasp.org/Top10/A05_2021-Security_Misconfiguration/", 
-        "https://owasp.org/Top10/A01_2021-Broken_Access_Control/", 
+        "https://owasp.org/Top10/A05_2021-Security_Misconfiguration/",
+        "https://owasp.org/Top10/A01_2021-Broken_Access_Control/",
         "https://owasp.org/Top10/A04_2021-Insecure_Design/"
       ],
       "flags": [
@@ -95,15 +95,15 @@
       "description": "Exploit a vulnerability in the system that will allow you to take down all users at once. Act quickly and precisely, combine different technologies, and even write your own code.",
       "takeaway": "This challenge aims to help you learn about XSS attacks, a common vulnerability in web applications. By finding a vulnerability in an e-commerce website, you will be able to execute malicious JavaScript code and gain access to sensitive data. This challenge implements the OWASP TOP 10 (2021) vulnerability: Injection (A03). Injection attacks allow attackers to execute malicious code within an IT system, which can lead to unauthorized access to data. By completing this challenge, you will gain an understanding of these vulnerabilities and the potential consequences of exploiting them. You will also learn about how to implement proper security measures to prevent such attacks in the future.",
       "takeaway_urls": [
-        "https://owasp.org/Top10/A04_2021-Insecure_Design/", 
-        "https://owasp.org/Top10/A03_2021-Injection/", 
-        "https://owasp.org/Top10/A07_2021-Identification_and_Authentication_Failures/", 
+        "https://owasp.org/Top10/A04_2021-Insecure_Design/",
+        "https://owasp.org/Top10/A03_2021-Injection/",
+        "https://owasp.org/Top10/A07_2021-Identification_and_Authentication_Failures/",
         "https://owasp.org/Top10/A01_2021-Broken_Access_Control/"
       ],
       "flags": [
         {
           "flagName": "XSS/1",
-          "question": "Find injection-vulnerable input and enter its HTML ID",
+          "question": "Find injection-vulnerable input and enter flag from its HTML code",
           "hint": "Think about the place where everybody can receive your XSS code. Womewhere where you can share your thoughts.",
           "value": "xxx",
           "done": false
@@ -130,14 +130,14 @@
           "done": false
         },
         {
-          "flagName": "XSS/2",
+          "flagName": "XSS/5",
           "question": "Take controll over user' account. If the process is successful, you will receive the flag.",
           "hint": "Replace yours session token with stolen one. You can simply do it using 'Inspect' functionality in your browser",
           "value": "xxx",
           "done": false
         },
         {
-          "flagName": "XSS/2",
+          "flagName": "XSS/6",
           "question": "Make an order using stolen account. If the process is successful, you will receive the flag.",
           "hint": "Being logged into stolen account, add few items to the basket and make an order.",
           "value": "xxx",
@@ -153,7 +153,7 @@
       "takeaway_urls": [
         "https://owasp.org/Top10/A01_2021-Broken_Access_Control/",
         "https://owasp.org/Top10/A02_2021-Cryptographic_Failures/",
-        "https://owasp.org/Top10/A04_2021-Insecure_Design/", 
+        "https://owasp.org/Top10/A04_2021-Insecure_Design/",
         "https://owasp.org/Top10/A05_2021-Security_Misconfiguration/"
       ],
       "flags": [
