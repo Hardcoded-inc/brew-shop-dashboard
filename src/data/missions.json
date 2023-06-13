@@ -15,35 +15,35 @@
           "flagName": "SQL/1",
           "question": "Enter the HTML ID of the vulnerable text field",
           "hint": "Look for the search bar in the 'My orders' section of the user panel and inspect the HTML.",
-          "value": "xxx",
+          "value": "06a943c59f33a34bb5924aaf72cd2995",
           "done": false
         },
         {
           "flagName": "SQL/2",
           "question": "Enter the name of the table where user data is stored",
           "hint": "Start by creating a simple SQL code that will retrieve information from the database. Once you have access to the database, retrieve a list of tables in the database.",
-          "value": "xxx",
+          "value": "9df3e21fe4aa346bcb89f030103aba85",
           "done": false
         },
         {
           "flagName": "SQL/3",
           "question": "Enter the last name of the user with ID = 420",
           "hint": "Find the table that stores users, and then retrieve information about a specific user with a certain ID.",
-          "value": "xxx",
+          "value": "ad695f53ae7569fb981fc95598e27e67",
           "done": false
         },
         {
           "flagName": "SQL/4",
           "question": "Enter the ID of the user's (ID = 420) last shipment",
           "hint": "Find the table that stores all orders, and then retrieve only those that were placed by a specific user with a certain ID, listing them in descending order by date",
-          "value": "xxx",
+          "value": "c4ca4238a0b923820dcc509a6f75849b",
           "done": false
         },
         {
           "flagName": "SQL/5",
           "question": "Enter the tracking number of the shipment whose ID you provided in the previous task",
           "hint": "Retrieve all data for an order with a specific ID, and then search for the tracking number within it.",
-          "value": "xxx",
+          "value": "004b2a1020745efbd45bda255aa5d4a2",
           "done": false
         }
       ]
@@ -63,28 +63,28 @@
           "flagName": "ADMIN/1",
           "question": "Enter the name of the software on which the e-commerce platform is built.",
           "hint": "Analyze the code yourself or use ready-made browser plugins that will provide you with information about the technologies used.",
-          "value": "xxx",
+          "value": "fcab68cd83ddd2e411f5a41a6385cdca",
           "done": false
         },
         {
           "flagName": "ADMIN/2",
           "question": "Enter the password for the default administrator account in this software.",
           "hint": "Try to find the login path to the CMS panel and default data for the administrator account on the internet or in the documentation.",
-          "value": "xxx",
+          "value": "21232f297a57a5a743894a0e4a801fc3",
           "done": false
         },
         {
           "flagName": "ADMIN/3",
           "question": "Provide the HTML ID of the button responsible for changing the payment status in an order.",
-          "hint": "Find the place in the CMS where the administrator can edit the orders of buyers.",
-          "value": "xxx",
+          "hint": "Find the place in the CMS where the administrator can add history to the particular order.",
+          "value": "53251462625c00c677d1c973cca629ee",
           "done": false
         },
         {
           "flagName": "ADMIN/4",
-          "question": "Change the payment status to 'Paid', and then enter the flag that was displayed in the browser console.",
+          "question": "Change the payment status to 'Complete', and then enter the flag from alert.",
           "hint": "Try to modify the HTML / JavaScript code in such a way as to bypass the security measures for changing the payment status.",
-          "value": "xxx",
+          "value": "46c86a300d123a479b8e7246447dfcca",
           "done": false
         }
       ]
@@ -103,44 +103,44 @@
       "flags": [
         {
           "flagName": "XSS/1",
-          "question": "Find injection-vulnerable input and enter flag from its HTML code",
+          "question": "Find injection-vulnerable input and provide its HTML ID",
           "hint": "Think about the place where everybody can receive your XSS code. Womewhere where you can share your thoughts.",
-          "value": "xxx",
+          "value": "37477e6583af24fb5a6cade6efbc1a2e",
           "done": false
         },
         {
           "flagName": "XSS/2",
           "question": "Using XSS, display the name of this flag in the console: 'XSS/2'. If the process is successful, you will receive the flag.",
           "hint": "Create simple JS code which prints given text in the console, then try it out in the vulnerable area",
-          "value": "xxx",
+          "value": "2eebe48262f2aeb77ec8ecc5e36f6183",
           "done": false
         },
         {
           "flagName": "XSS/3",
-          "question": "Using XSS, send any messessage to the server ... and listen on the port :8000. If the process is successful, you will receive your messesage and the flag.",
+          "question": "[This flag is under development, you can't go any further. Provide 'XSS/3' as flag] Using XSS, send any messessage to the server ... and listen on the port :8000. If the process is successful, you will receive your messesage and the flag.",
           "hint": "Create JS code which sends any messesage to the given server IP. You can use 'XMLHttpRequest'. Using e.g. 'netcat -l <PORT>' or 'socat TCP-LISTEN:<PORT>' listen for the response from the server",
-          "value": "xxx",
+          "value": "8b786521270d387668f6dd323f6daad5",
           "done": false
         },
         {
           "flagName": "XSS/4",
-          "question": "Alter your XSS code to send user' session token to the server ... . If the process is successful, you will receive other user' token and the flag.",
+          "question": "[This flag is under development, you can't go any further. Provide 'XSS/4' as flag] Alter your XSS code to send user' session token to the server ... . If the process is successful, you will receive other user' token and the flag.",
           "hint": "Replace your previous random messessage with the user' session token. You can find it in the browser cookies.",
-          "value": "xxx",
+          "value": "59022261498ae83a660b282e9ab17fc8",
           "done": false
         },
         {
           "flagName": "XSS/5",
-          "question": "Take controll over user' account. If the process is successful, you will receive the flag.",
+          "question": "[This flag is under development, you can't go any further. Provide 'XSS/5' as flag] Take controll over user' account. If the process is successful, you will receive the flag.",
           "hint": "Replace yours session token with stolen one. You can simply do it using 'Inspect' functionality in your browser",
-          "value": "xxx",
+          "value": "f4f173624e6c59cdf715ea1a72992f5d",
           "done": false
         },
         {
           "flagName": "XSS/6",
-          "question": "Make an order using stolen account. If the process is successful, you will receive the flag.",
+          "question": "[This flag is under development, you can't go any further. Provide 'XSS/6' as flag] Make an order using stolen account. If the process is successful, you will receive the flag.",
           "hint": "Being logged into stolen account, add few items to the basket and make an order.",
-          "value": "xxx",
+          "value": "a525682c0c701f4cf77df9af078693ca",
           "done": false
         }
       ]

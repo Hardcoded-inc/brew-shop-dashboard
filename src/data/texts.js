@@ -6,6 +6,7 @@ status              - show mission status
 select [MISSION ID] - select mission
 flag [FLAG VALUE]   - check flag
 clear               - clear terminal
+takeaway            - learn more about this attack
 
 `;
 
